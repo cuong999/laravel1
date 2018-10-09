@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href=" {{ asset('layouts/css/style.css') }}  ">
+
+  <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+    <h1 class="register-title">Welcome</h1>
+    <form class="register" method="post" action=" {{route('addus')}} ">
+        <div class="register-switch">
+            <input type="radio" name="sex" value="Nam" id="sex_m" class="register-switch-input" checked>
+            <label for="sex_m" class="register-switch-label">Nam</label>
+            <input type="radio" name="sex" value="Nu" id="sex_f" class="register-switch-input">
+            <label for="sex_f" class="register-switch-label">Nữ</label>
+        </div>
+        <input type="name" class="register-input" placeholder="Name" name="name">
+        @if ($errors->has('name'))
+            <span class="help-block">
+                <strong>{{ $errors->first('name') }}</strong>
+            </span>
+        @endif
+        <input type="email" class="register-input" placeholder="Email address" name="email">
+            <span class="help-block">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+
+        <input type="password" class="register-input" placeholder="Password" name="password">
+        @if ($errors->has('password'))
+            <span class="help-block">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+        @endif
+
+        <input type="submit" value="Create Account" class="register-button" >
+        {{ csrf_field() }}
+     </form>
+</body>
+</html>
