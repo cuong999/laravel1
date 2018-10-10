@@ -122,9 +122,15 @@ iframe {
   display: table;
   margin: 0;
 }
-  .image-blog{
-    width: 50%;
-  }
+.image-blog{
+  width: 50%;
+}
+.addbv{
+  text-align: right;
+}
+.cell a:hover{
+  color: #ff0000;
+}
 @media screen and (max-width: 768px) {
   .table {
     display: block;
@@ -211,7 +217,6 @@ iframe {
 
 .row .cell:nth-child(2) {
   width: 360px;
-  text-align: center;
 }
 
 .row .cell:nth-child(3) {
@@ -230,6 +235,9 @@ iframe {
 .row:hover {
   background-color: #ececff;
   cursor: pointer;
+}
+.title{
+  text-align: center!important;
 }
 
 @media (max-width: 768px) {

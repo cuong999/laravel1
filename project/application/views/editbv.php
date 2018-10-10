@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Thêm Bài Viết</title>
+        <title>Sửa Bài Viết</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
         <!-- Optional theme -->
@@ -24,35 +24,27 @@
                     <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
                         <div class="panel panel-danger">
                             <div class="panel-body">
-                                <form  method="post" action="<?php echo base_url()?>index.php/Welcome/add"  enctype="multipart/form-data">
+                                <form  method="post" action="<?php echo base_url()?>index.php/Welcome/edit/<?php echo $dulieu['id']; ?>"  enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label><i class="fa fa-user" aria-hidden="true"></i> Tiêu Đề </label>
-                                        <input type="text" name="tieude" class="form-control" >
+                                        <input type="text" name="tieude" class="form-control" value="<?php echo $dulieu['tieude']; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label><i class="fa fa-comment" aria-hidden="true"></i> Mô Tả</label>
-                                        <textarea rows="3" name="mota" class="form-control"></textarea>
+                                        <textarea rows="3" name="mota" class="form-control" > <?php echo $dulieu['mota']; ?> </textarea>
                                     </div>
-                                    <div class="form-group">
+                                     <div class="form-group">
                                         <label><i class="fa fa-comment" aria-hidden="true"></i> Chi Tiết </label>
-                                        <textarea id="editor1" name="chitiet" cols="90" rows="15"></textarea>
+                                        <textarea id="editor1" name="chitiet" cols="90" rows="15"><?php echo $dulieu['chitiet_tin']; ?></textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label><i class="fa fa-comment" aria-hidden="true"></i> Thể Loại </label>
-                                        <select name="danhmuc">
-                                            <?php foreach ($showlist as $row) {?>
-                                                <option value="<?php echo $row['id'] ?>"> <?php echo $row['ten_danhmuc'] ?> </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-
+                                    <div><img class="image-repair" src="<?php echo base_url() ?>upload/<?php echo $dulieu['hinhanh']; ?>"></div>
                                     <div class="form-group">
                                         <label><i class="fa fa-upload" aria-hidden="true"></i>Upload Image</label>
                                         <input type="file" name="picture" id="picture">
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-raised btn-block btn-danger">Thêm </button>
+                                        <button class="btn btn-raised btn-block btn-danger">Sửa </button>
                                     </div>
                                 </form>
                                 <script>
