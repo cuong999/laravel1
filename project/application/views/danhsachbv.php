@@ -27,6 +27,7 @@
 		<div class="container-table100">
 
 			<div class="wrap-table100">
+					<div class="addbv"><a href="<?php echo base_url();?>index.php/welcome/logout">Logout</a></div>
 					<div class="table">
 
 						<div class="row header">
@@ -73,6 +74,7 @@
 						</div>
 						<?php } ?>
 					</div>
+					<div>
 					<div class="addbv"><a href="<?php echo base_url();?>index.php/welcome/showAddBlog">Thêm Bài Viết</a></div>
 			</div>
 		</div>

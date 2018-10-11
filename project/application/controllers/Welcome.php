@@ -1,10 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class Welcome extends CI_Controller {
     public function __construct(){
         parent::__construct();
+        // session_start();
+        $this->load->library('session');
+
         $this->load->helper("url");
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        
     }
    
 	public function index()
@@ -229,4 +236,91 @@ class Welcome extends CI_Controller {
         $this->load->library('pagination', $config);
         echo $this->pagination->create_links();
     }
-}
+    public function login()
+    {   
+        $this->load->view('login_form');
+    }
+    public function register_show()
+    {
+        $this->load->view('registration_form');
+    }
+    public function addregistor()
+    {   
+        $this->load->Model("News_model");
+       // Check validation for user input in SignUp form
+        $this->form_validation->set_rules('username', 'Username', 'trim|required');
+        $this->form_validation->set_rules('email_value', 'Email', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('registration_form');
+        }
+
+        else {
+            $data = array(
+            'user_name'     => $this->input->get_post('username'),
+            'user_email'    => $this->input->get_post('email_value'),
+            'user_password' => $this->input->get_post('password')
+            );
+            $result = $this->db->insert("user_login",$data);
+
+             
+            $data['message_display'] = 'Đăng ký thành công !';
+            $this->load->view('login_form', $data);
+            
+
+        }
+        
+    }
+    public function addlogin()
+    {
+        $this->load->Model("News_model");
+        $this->form_validation->set_rules('username', 'Username', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        if ($this->form_validation->run() == FALSE) {
+            if(isset($this->session->userdata['logged_in'])){
+            $this->load->view('danhsachbv');
+            }
+            else{
+            $this->load->view('login_form');
+            }
+        }
+
+        else {
+            $data = array(
+            'username' => $this->input->get_post('username'),
+            'password' => $this->input->get_post('password')
+            );
+            $result = $this->News_model->login($data);
+            if ($result == TRUE) {
+
+                $username = $this->input->get_post('username');
+                $result   = $this->News_model->read_user_information($username);
+                if ($result == TRUE) {
+                $session_data = array(
+                'username' => $result[0]->user_name,
+                'email'    => $result[0]->user_email,
+                );
+                $this->session->set_userdata('logged_in', $session_data);
+                return redirect('/welcome/danhsach');
+                } 
+                
+            }
+            else {
+            $data = array(
+                'error_message' => ' Username or Password Không Đúng!'
+                );
+                $this->load->view('login_form', $data); 
+            }    
+        }        
+    }
+    public function logout()
+    {
+        $sess_array = array(
+        'username' => ''
+        );
+        $this->session->unset_userdata('logged_in', $sess_array);
+        $data['message_display'] = 'Successfully Logout';
+        $this->load->view('login_form', $data);
+    }
+}    
