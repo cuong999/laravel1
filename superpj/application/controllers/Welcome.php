@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
         $this->load->model("News_model");
         $config['total_rows'] = $this->News_model->countAll();
         $config['base_url'] = base_url()."index.php/welcome/index/";
-        $config['per_page'] = 2;
+        $config['per_page'] = 3;
         $config['use_page_numbers'] = TRUE;
         //$this->uri->segment(3) lay param paginate sau index
         $start = ($this->uri->segment(3)) ? (($this->uri->segment(3) * $config['per_page'])- $config['per_page']) : 0;
@@ -140,14 +140,16 @@ class Welcome extends CI_Controller {
 
         $config['total_rows'] = $dem;
         $config['base_url'] = base_url()."index.php/welcome/showbaiviet/$id_listblog/";
-        $number = $config['per_page'] = 2;//so ban ghi moi trang
+        $number = $config['per_page'] = 3;//so ban ghi moi trang
         $config['use_page_numbers'] = TRUE;
          
         $this->load->library('pagination', $config);   
         $this->db->where("url_danhmuc","$id_listblog");
         //$this->uri->segment(4) lay param sau param $id_listblog
         $start =  ($this->uri->segment(4)) ? (($this->uri->segment(4) * $config['per_page'])- $config['per_page']) : 0;
-        $data['dulieubv1']   = $this->News_model->get_all_project1($number, $start);
+        // print_r($start);
+        // exit();
+        $data['dulieubv1']   = $this->News_model->get_all_project1($start, $number);
         $query1          = $this->db->get("list_blog");
         $menu            = $query1->result_array();
         $this->db->select("id, tieude, url_bv");
