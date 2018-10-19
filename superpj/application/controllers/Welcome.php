@@ -15,8 +15,15 @@ class Welcome extends CI_Controller {
     }
    
     public function index()
-    {   //phan trang 
+    {  
         $this->load->model("News_model");
+         //lay menu 
+        $query1= $this->db->get("list_blog");
+        $menu  = $query1->result_array();
+        $data['menu']  =  $menu;
+        $this->load->view("header",$data);
+        
+        //phan trang 
         $config['total_rows'] = $this->News_model->countAll();
         $config['base_url'] = base_url()."index.php/welcome/index/";
         $config['per_page'] = 3;
@@ -24,21 +31,17 @@ class Welcome extends CI_Controller {
         //$this->uri->segment(3) lay param paginate sau index
         $start = ($this->uri->segment(3)) ? (($this->uri->segment(3) * $config['per_page'])- $config['per_page']) : 0;
         $this->load->library('pagination', $config);
-        
+        $data['blog']  = $this->News_model->listall( $start, $config['per_page']);
+        $this->load->view("news", $data);
+
         //lay bai viet moi nhat
-        $this->db->select("id, tieude, url_bv");
+        $this->db->select("id, tieude, url_bv, hinhanh");
         $this->db->order_by("id desc");
         $this->db->limit(2,0);        
         $query =$this->db->get("blog_detail");
         $blog1 = $query->result_array();
-        //lay menu 
-        $query1= $this->db->get("list_blog");
-        $menu  = $query1->result_array();
-        //truyen bien
-        $data['blog']  = $this->News_model->listall( $start, $config['per_page']);
-        $data['menu']  =  $menu;
         $data['blog1'] =  $blog1;
-        $this->load->view("news", $data);
+        $this->load->view("footer", $data);
     }
     
     public function news()
@@ -134,53 +137,54 @@ class Welcome extends CI_Controller {
     public function showbaiviet($id_listblog)
     {
         $this->load->Model("News_model");
+        $query1= $this->db->get("list_blog");
+        $menu  = $query1->result_array();
+        $data['menu']  =  $menu;
+        $this->load->view("header",$data);
+
         $mang = $this->News_model->countlist($id_listblog);
         $data['mang'] = $mang;
         $dem = count($mang);
-
         $config['total_rows'] = $dem;
         $config['base_url'] = base_url()."index.php/welcome/showbaiviet/$id_listblog/";
         $number = $config['per_page'] = 3;//so ban ghi moi trang
-        $config['use_page_numbers'] = TRUE;
-         
+        $config['use_page_numbers'] = TRUE; 
         $this->load->library('pagination', $config);   
         $this->db->where("url_danhmuc","$id_listblog");
         //$this->uri->segment(4) lay param sau param $id_listblog
         $start =  ($this->uri->segment(4)) ? (($this->uri->segment(4) * $config['per_page'])- $config['per_page']) : 0;
         // print_r($start);
         // exit();
-        $data['dulieubv1']   = $this->News_model->get_all_project1($start, $number);
-        $query1          = $this->db->get("list_blog");
-        $menu            = $query1->result_array();
-        $this->db->select("id, tieude, url_bv");
+        $data['dulieubv1']   = $this->News_model->get_all_project1($start, $number);   
+        $this->load->view('theloaibv', $data);
+
+
+        $this->db->select("id, tieude, url_bv, hinhanh");
         $this->db->order_by("id desc");
         $this->db->limit(2,0);        
         $query           =$this->db->get("blog_detail");
-                   
-        //truyen bien ra view
         $data['blog1']   = $query->result_array();
-        $data['menu']    = $menu ;
-        $data['id_listblog'] = $id_listblog;
-
-        $this->load->view('theloaibv', $data);
-
+        $this->load->view("footer",$data);
     }
     public function baivietchitiet($id)
     {
         $this->load->Model("News_model"); 
+
+        $query1= $this->db->get("list_blog");
+        $menu  = $query1->result_array();
+        $data['menu']  =  $menu;
+        $this->load->view("header",$data); 
+
         $this->db->where("url_bv","$id");
         $query2          = $this->db->get("blog_detail");
-        $dulieubv        = $query2->row_array();
-        $query1          = $this->db->get("list_blog");
-        $menu            = $query1->result_array();
-        $this->db->select("id, tieude, url_bv");
+        $data['dulieubv']= $query2->row_array();
+
+        $this->db->select("id, tieude, url_bv, hinhanh");
         $this->db->order_by("id desc");
         $this->db->limit(2,0);        
         $query           =$this->db->get("blog_detail");
-        $blog1           = $query->result_array();
-        $data['blog1']   = $blog1 ; 
-        $data['dulieubv']= $dulieubv ;
-        $data['menu']    = $menu ;
+        $data['blog1']   = $query->result_array();
+
         $this->load->view('chitietbv', $data);
     }
     public function edit($id)
