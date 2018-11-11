@@ -1,0 +1,9 @@
+{
+    "name": "Svprocess",
+    "namespace": "Bytesoft\\Svprocess\\",
+    "provider": "Bytesoft\\Svprocess\\Providers\\SvprocessServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "1.0",
+    "description": "The description for plugin svprocess"
+}

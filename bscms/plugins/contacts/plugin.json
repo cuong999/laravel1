@@ -1,0 +1,9 @@
+{
+    "name": "Contacts",
+    "namespace": "Bytesoft\\Contacts\\",
+    "provider": "Bytesoft\\Contacts\\Providers\\ContactsServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "1.0",
+    "description": "The description for plugin contacts"
+}

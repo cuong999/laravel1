@@ -1,0 +1,9 @@
+{
+    "name": "Log Viewer",
+    "namespace": "Bytesoft\\LogViewer\\",
+    "provider": "Bytesoft\\LogViewer\\Providers\\LogViewerServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.6",
+    "description": "Log Viewer"
+}

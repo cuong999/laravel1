@@ -1,0 +1,9 @@
+{
+    "name": "Backup",
+    "namespace": "Bytesoft\\Backup\\",
+    "provider": "Bytesoft\\Backup\\Providers\\BackupServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.6",
+    "description": "Backup & restore database, uploads folder"
+}

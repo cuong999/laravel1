@@ -1,0 +1,1 @@
+<i class="fa fa-plus"></i> <?php echo e(trans('core.base::forms.create')); ?>

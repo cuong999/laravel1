@@ -1,0 +1,9 @@
+{
+    "name": "Note",
+    "namespace": "Bytesoft\\Note\\",
+    "provider": "Bytesoft\\Note\\Providers\\NoteServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.6",
+    "description": "Allow to add note when editing page, post..."
+}

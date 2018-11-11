@@ -1,0 +1,9 @@
+{
+    "name": "Product",
+    "namespace": "Bytesoft\\Product\\",
+    "provider": "Bytesoft\\Product\\Providers\\ProductServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "1.0",
+    "description": "The description for plugin product"
+}

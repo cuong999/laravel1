@@ -1,0 +1,9 @@
+{
+    "name": "Gallery",
+    "namespace": "Bytesoft\\Gallery\\",
+    "provider": "Bytesoft\\Gallery\\Providers\\GalleryServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.7",
+    "description": "Create or easy to add gallery images to posts, pages..."
+}

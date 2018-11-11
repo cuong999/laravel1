@@ -1,0 +1,169 @@
+<?php
+
+namespace Bytesoft\{Plugin}\Http\Controllers;
+
+use Bytesoft\Base\Events\BeforeEditContentEvent;
+use Bytesoft\{Plugin}\Http\Requests\{Plugin}Request;
+use Bytesoft\{Plugin}\Repositories\Interfaces\{Plugin}Interface;
+use Bytesoft\Base\Http\Controllers\BaseController;
+use Illuminate\Http\Request;
+use Exception;
+use Bytesoft\{Plugin}\Tables\{Plugin}Table;
+use Bytesoft\Base\Events\CreatedContentEvent;
+use Bytesoft\Base\Events\DeletedContentEvent;
+use Bytesoft\Base\Events\UpdatedContentEvent;
+use Bytesoft\Base\Http\Responses\BaseHttpResponse;
+use Bytesoft\{Plugin}\Forms\{Plugin}Form;
+use Bytesoft\Base\Forms\FormBuilder;
+
+class {Plugin}Controller extends BaseController
+{
+    /**
+     * @var {Plugin}Interface
+     */
+    protected ${+plugin}Repository;
+
+    /**
+     * {Plugin}Controller constructor.
+     * @param {Plugin}Interface ${+plugin}Repository
+     * @author Bytesoft
+     */
+    public function __construct({Plugin}Interface ${+plugin}Repository)
+    {
+        $this->{+plugin}Repository = ${+plugin}Repository;
+    }
+
+    /**
+     * Display all {plugins}
+     * @param {Plugin}Table $dataTable
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @author Bytesoft
+     * @throws \Throwable
+     */
+    public function getList({Plugin}Table $table)
+    {
+
+        page_title()->setTitle(trans('plugins.{-plugin}::{-plugin}.name'));
+
+        return $table->renderTable();
+    }
+
+    /**
+     * @param FormBuilder $formBuilder
+     * @return string
+     * @author Bytesoft
+     */
+    public function getCreate(FormBuilder $formBuilder)
+    {
+        page_title()->setTitle(trans('plugins.{-plugin}::{-plugin}.create'));
+
+        return $formBuilder->create({Plugin}Form::class)->renderForm();
+    }
+
+    /**
+     * Insert new {Plugin} into database
+     *
+     * @param {Plugin}Request $request
+     * @return BaseHttpResponse
+     * @author Bytesoft
+     */
+    public function postCreate({Plugin}Request $request, BaseHttpResponse $response)
+    {
+        ${plugin} = $this->{+plugin}Repository->createOrUpdate($request->input());
+
+        event(new CreatedContentEvent({PLUGIN}_MODULE_SCREEN_NAME, $request, ${plugin}));
+
+        return $response
+            ->setPreviousUrl(route('{plugin}.list'))
+            ->setNextUrl(route('{plugin}.edit', ${plugin}->id))
+            ->setMessage(trans('core.base::notices.create_success_message'));
+    }
+
+    /**
+     * Show edit form
+     *
+     * @param $id
+     * @param Request $request
+     * @param FormBuilder $formBuilder
+     * @return string
+     * @author Bytesoft
+     */
+    public function getEdit($id, FormBuilder $formBuilder, Request $request)
+    {
+        ${plugin} = $this->{+plugin}Repository->findOrFail($id);
+
+        event(new BeforeEditContentEvent({PLUGIN}_MODULE_SCREEN_NAME, $request, ${plugin}));
+
+        page_title()->setTitle(trans('plugins.{-plugin}::{-plugin}.edit') . ' #' . $id);
+
+        return $formBuilder->create({Plugin}Form::class)->setModel(${plugin})->renderForm();
+    }
+
+    /**
+     * @param $id
+     * @param {Plugin}Request $request
+     * @return BaseHttpResponse
+     * @author Bytesoft
+     */
+    public function postEdit($id, {Plugin}Request $request, BaseHttpResponse $response)
+    {
+        ${plugin} = $this->{+plugin}Repository->findOrFail($id);
+
+        ${plugin}->fill($request->input());
+
+        $this->{+plugin}Repository->createOrUpdate(${plugin});
+
+        event(new UpdatedContentEvent({PLUGIN}_MODULE_SCREEN_NAME, $request, ${plugin}));
+
+        return $response
+            ->setPreviousUrl(route('{plugin}.list'))
+            ->setMessage(trans('core.base::notices.update_success_message'));
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return BaseHttpResponse
+     * @author Bytesoft
+     */
+    public function getDelete(Request $request, $id, BaseHttpResponse $response)
+    {
+        try {
+            ${plugin} = $this->{+plugin}Repository->findOrFail($id);
+
+            $this->{+plugin}Repository->delete(${plugin});
+
+            event(new DeletedContentEvent({PLUGIN}_MODULE_SCREEN_NAME, $request, ${plugin}));
+
+            return $response->setMessage(trans('core.base::notices.delete_success_message'));
+        } catch (Exception $exception) {
+            return $response
+                ->setError()
+                ->setMessage(trans('core.base::notices.cannot_delete'));
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @param BaseHttpResponse $response
+     * @return BaseHttpResponse
+     * @author Bytesoft
+     */
+    public function postDeleteMany(Request $request, BaseHttpResponse $response)
+    {
+        $ids = $request->input('ids');
+        if (empty($ids)) {
+            return $response
+                ->setError()
+                ->setMessage(trans('core.base::notices.no_select'));
+        }
+
+        foreach ($ids as $id) {
+            ${plugin} = $this->{+plugin}Repository->findOrFail($id);
+            $this->{+plugin}Repository->delete(${plugin});
+            event(new DeletedContentEvent({PLUGIN}_MODULE_SCREEN_NAME, $request, ${plugin}));
+        }
+
+        return $response->setMessage(trans('core.base::notices.delete_success_message'));
+    }
+}

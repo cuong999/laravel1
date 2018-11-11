@@ -1,0 +1,9 @@
+{
+    "name": "Blog",
+    "namespace": "Bytesoft\\Blog\\",
+    "provider": "Bytesoft\\Blog\\Providers\\BlogServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.7",
+    "description": "Manage posts, categories, tags upgrade by thuandc@bytesoft.net"
+}

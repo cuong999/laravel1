@@ -1,0 +1,9 @@
+{
+    "name": "Translation",
+    "namespace": "Bytesoft\\Translation\\",
+    "provider": "Bytesoft\\Translation\\Providers\\TranslationServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.6",
+    "description": "Manage translation text"
+}

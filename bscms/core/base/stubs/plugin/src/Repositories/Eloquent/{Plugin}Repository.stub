@@ -1,0 +1,14 @@
+<?php
+
+namespace Bytesoft\{Plugin}\Repositories\Eloquent;
+
+use Bytesoft\Support\Repositories\Eloquent\RepositoriesAbstract;
+use Bytesoft\{Plugin}\Repositories\Interfaces\{Plugin}Interface;
+
+class {Plugin}Repository extends RepositoriesAbstract implements {Plugin}Interface
+{
+    /**
+     * @var string
+     */
+    protected $screen = {PLUGIN}_MODULE_SCREEN_NAME;
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Service",
+    "namespace": "Bytesoft\\Service\\",
+    "provider": "Bytesoft\\Service\\Providers\\ServiceServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "1.0",
+    "description": "The description for plugin service"
+}

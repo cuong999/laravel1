@@ -1,0 +1,9 @@
+{
+    "name": "Analytics",
+    "namespace": "Bytesoft\\Analytics\\",
+    "provider": "Bytesoft\\Analytics\\Providers\\AnalyticsServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.6",
+    "description": "Tracking data from Google Analytics"
+}

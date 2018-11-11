@@ -1,0 +1,9 @@
+{
+    "name": "Language",
+    "namespace": "Bytesoft\\Language\\",
+    "provider": "Bytesoft\\Language\\Providers\\LanguageServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.6",
+    "description": "Multilingual for Bytesoft CMS"
+}

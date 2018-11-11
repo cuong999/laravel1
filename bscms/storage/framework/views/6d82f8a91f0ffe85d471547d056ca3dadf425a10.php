@@ -1,0 +1,1 @@
+<a href="<?php echo e(Route::has($route . '.' . 'edit') ? route($route . '.' . 'edit', $item->id) : '#'); ?>" class="tip" title="<?php echo e(trans('plugins.language::language.current_language')); ?>"><i class="fa fa-check text-success"></i></a>

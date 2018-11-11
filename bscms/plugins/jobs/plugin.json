@@ -1,0 +1,9 @@
+{
+    "name": "Jobs",
+    "namespace": "Bytesoft\\Jobs\\",
+    "provider": "Bytesoft\\Jobs\\Providers\\JobsServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "1.0",
+    "description": "The description for plugin jobs"
+}

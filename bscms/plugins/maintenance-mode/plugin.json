@@ -1,0 +1,9 @@
+{
+    "name": "MaintenanceMode",
+    "namespace": "Bytesoft\\MaintenanceMode\\",
+    "provider": "Bytesoft\\MaintenanceMode\\Providers\\MaintenanceModeServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "1.0",
+    "description": "The description for plugin maintenance_mode"
+}

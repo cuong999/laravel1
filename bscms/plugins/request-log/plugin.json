@@ -1,0 +1,9 @@
+{
+    "name": "Request Log",
+    "namespace": "Bytesoft\\RequestLog\\",
+    "provider": "Bytesoft\\RequestLog\\Providers\\RequestLogServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "3.0",
+    "description": "Log error requests"
+}

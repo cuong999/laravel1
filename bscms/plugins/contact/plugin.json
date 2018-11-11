@@ -1,0 +1,9 @@
+{
+    "name": "Contact Form",
+    "namespace": "Bytesoft\\Contact\\",
+    "provider": "Bytesoft\\Contact\\Providers\\ContactServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.7",
+    "description": "Contact Form"
+}

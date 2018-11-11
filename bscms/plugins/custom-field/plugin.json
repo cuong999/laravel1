@@ -1,0 +1,9 @@
+{
+    "name": "Custom Fields",
+    "namespace": "Bytesoft\\CustomField\\",
+    "provider": "Bytesoft\\CustomField\\Providers\\CustomFieldServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.7",
+    "description": "Custom Fields"
+}

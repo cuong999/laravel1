@@ -1,0 +1,9 @@
+{
+  "name": "Captcha",
+  "namespace": "Bytesoft\\Captcha\\",
+  "provider": "Bytesoft\\Captcha\\Providers\\CaptchaServiceProvider",
+  "author": "Bytesoft",
+  "url": "https://bytesoft.vn",
+  "version": "2.6",
+  "description": "Captcha for higher security"
+}

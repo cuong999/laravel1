@@ -1,0 +1,9 @@
+{
+  "name": "Member",
+  "namespace": "Bytesoft\\Member\\",
+  "provider": "Bytesoft\\Member\\Providers\\MemberServiceProvider",
+  "author": "Bytesoft",
+  "url": "https://bytesoft.vn",
+  "version": "2.7",
+  "description": "Manage member, user register/login"
+}

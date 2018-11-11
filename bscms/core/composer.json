@@ -1,0 +1,109 @@
+{
+    "name": "botble/platform",
+    "description": "The Bytesoft Platform based on Laravel Framework.",
+    "keywords": [
+        "botble",
+        "botble cms",
+        "botble platform"
+    ],
+    "homepage": "https://botble.com",
+    "support": {
+        "issues": "https://github.com/botble/issues",
+        "document": "https://docs.botble.com"
+    },
+    "authors": [
+        {
+            "name": "Bytesoft",
+            "email": "thuandc@bytesoft.net"
+        }
+    ],
+    "type": "project",
+    "require": {
+        "barryvdh/laravel-dompdf": "^0.8.2",
+        "chumper/zipper": "^1.0",
+        "davejamesmiller/laravel-breadcrumbs": "^5.1",
+        "doctrine/dbal": "^2.6",
+        "intervention/image": "^2.4",
+        "ixudra/curl": "^6.16",
+        "jeremeamia/SuperClosure": "^2.4",
+        "kris/laravel-form-builder": "^1.14",
+        "laravel/passport": "^7.0",
+        "laravel/socialite": "^3.0",
+        "laravelcollective/html": "5.7.*",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "pragmarx/countries": "^0.5",
+        "proengsoft/laravel-jsvalidation": "^2.3",
+        "ralouphie/mimey": "^2.0",
+        "laravelium/sitemap": "3.0.1",
+        "tightenco/ziggy": "^0.6.6",
+        "venturecraft/revisionable": "^1.28",
+        "yajra/laravel-datatables-buttons": "^4.2",
+        "yajra/laravel-datatables-oracle": "^8.8",
+        "lab404/laravel-impersonate": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bytesoft\\Support\\": "support/src",
+            "Bytesoft\\ACL\\": "acl/src",
+            "Bytesoft\\Assets\\": "assets/src",
+            "Bytesoft\\Base\\": "base/src",
+            "Bytesoft\\Dashboard\\": "dashboard/src",
+            "Bytesoft\\Media\\": "media/src",
+            "Bytesoft\\Menu\\": "menu/src",
+            "Bytesoft\\Page\\": "page/src",
+            "Bytesoft\\SeoHelper\\": "seo-helper/src",
+            "Bytesoft\\Widget\\": "widget/src",
+            "Bytesoft\\Setting\\": "setting/src",
+            "Bytesoft\\Theme\\": "theme/src",
+            "Bytesoft\\Optimize\\": "optimize/src",
+            "Bytesoft\\Slug\\": "slug/src",
+            "Bytesoft\\Shortcode\\": "shortcode/src",
+            "Bytesoft\\Table\\": "table/src",
+            "Bytesoft\\Installer\\": "installer/src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bytesoft\\Base\\Providers\\BaseServiceProvider",
+                "Bytesoft\\Base\\Providers\\CommandServiceProvider",
+                "Bytesoft\\Base\\Providers\\EventServiceProvider",
+                "Bytesoft\\Base\\Providers\\RouteServiceProvider",
+                "Bytesoft\\Base\\Providers\\BreadcrumbsServiceProvider",
+                "Bytesoft\\Base\\Providers\\ComposerServiceProvider",
+                "Bytesoft\\Base\\Providers\\MailConfigServiceProvider",
+                "Bytesoft\\Base\\Providers\\FormServiceProvider",
+                "Bytesoft\\Base\\Providers\\HookServiceProvider",
+                "Bytesoft\\Widget\\Providers\\WidgetServiceProvider",
+                "Bytesoft\\Support\\Providers\\SupportServiceProvider",
+                "Bytesoft\\Assets\\Providers\\AssetsServiceProvider",
+                "Bytesoft\\Shortcode\\Providers\\ShortcodeServiceProvider",
+                "Bytesoft\\Table\\Providers\\TableServiceProvider",
+                "Bytesoft\\ACL\\Providers\\AclServiceProvider",
+                "Bytesoft\\Dashboard\\Providers\\DashboardServiceProvider",
+                "Bytesoft\\Media\\Providers\\MediaServiceProvider",
+                "Bytesoft\\Menu\\Providers\\MenuServiceProvider",
+                "Bytesoft\\Page\\Providers\\PageServiceProvider",
+                "Bytesoft\\SeoHelper\\Providers\\SeoHelperServiceProvider",
+                "Bytesoft\\Theme\\Providers\\ThemeServiceProvider",
+                "Bytesoft\\Optimize\\Providers\\OptimizeServiceProvider",
+                "Bytesoft\\Slug\\Providers\\SlugServiceProvider"
+            ],
+            "aliases": {
+                "MetaBox": "Bytesoft\\Base\\Facades\\MetaBoxFacade",
+                "Action": "Bytesoft\\Base\\Facades\\ActionFacade",
+                "Filter": "Bytesoft\\Base\\Facades\\FilterFacade",
+                "EmailHandler": "Bytesoft\\Base\\Facades\\EmailHandlerFacade",
+                "AdminBar": "Bytesoft\\Base\\Facades\\AdminBarFacade",
+                "AdminBreadcrumb": "Bytesoft\\Base\\Facades\\AdminBreadcrumbFacade",
+                "DashboardMenu": "Bytesoft\\Base\\Facades\\DashboardMenuFacade",
+                "SiteMapManager": "Bytesoft\\Base\\Facades\\SiteMapManagerFacade",
+                "JsonFeedManager": "Bytesoft\\Base\\Facades\\JsonFeedManagerFacade",
+                "ChartBuilder": "Bytesoft\\Base\\Facades\\ChartBuilderFacade",
+                "MailVariable": "Bytesoft\\Base\\Facades\\MailVariableFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

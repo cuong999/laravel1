@@ -1,0 +1,9 @@
+<?php
+
+namespace Bytesoft\{Plugin}\Repositories\Interfaces;
+
+use Bytesoft\Support\Repositories\Interfaces\RepositoryInterface;
+
+interface {Plugin}Interface extends RepositoryInterface
+{
+}

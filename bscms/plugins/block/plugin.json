@@ -1,0 +1,9 @@
+{
+    "name": "Block",
+    "namespace": "Bytesoft\\Block\\",
+    "provider": "Bytesoft\\Block\\Providers\\BlockServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.6",
+    "description": "Manage static block (HTML, Text) on your theme"
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Audit Log",
+    "namespace": "Bytesoft\\AuditLog\\",
+    "provider": "Bytesoft\\AuditLog\\Providers\\AuditLogServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "2.6",
+    "description": "Record activities logs"
+}

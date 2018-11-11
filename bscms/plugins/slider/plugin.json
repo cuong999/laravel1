@@ -1,0 +1,9 @@
+{
+    "name": "Slider",
+    "namespace": "Bytesoft\\Slider\\",
+    "provider": "Bytesoft\\Slider\\Providers\\SliderServiceProvider",
+    "author": "Bytesoft",
+    "url": "https://bytesoft.vn",
+    "version": "1.0",
+    "description": "The description for plugin slider"
+}

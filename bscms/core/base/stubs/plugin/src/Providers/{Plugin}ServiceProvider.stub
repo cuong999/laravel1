@@ -1,0 +1,68 @@
+<?php
+
+namespace Bytesoft\{Plugin}\Providers;
+
+use Bytesoft\{Plugin}\Models\{Plugin};
+use Illuminate\Support\ServiceProvider;
+use Bytesoft\{Plugin}\Repositories\Caches\{Plugin}CacheDecorator;
+use Bytesoft\{Plugin}\Repositories\Eloquent\{Plugin}Repository;
+use Bytesoft\{Plugin}\Repositories\Interfaces\{Plugin}Interface;
+use Bytesoft\Support\Services\Cache\Cache;
+use Bytesoft\Base\Supports\Helper;
+use Bytesoft\Base\Events\SessionStarted;
+use Event;
+use Bytesoft\Base\Traits\LoadAndPublishDataTrait;
+
+class {Plugin}ServiceProvider extends ServiceProvider
+{
+    use LoadAndPublishDataTrait;
+
+    /**
+     * @var \Illuminate\Foundation\Application
+     */
+    protected $app;
+
+    /**
+     * @author Bytesoft
+     */
+    public function register()
+    {
+        if (setting('enable_cache', false)) {
+            $this->app->singleton({Plugin}Interface::class, function () {
+                return new {Plugin}CacheDecorator(new {Plugin}Repository(new {Plugin}()), new Cache($this->app['cache'], {Plugin}Repository::class));
+            });
+        } else {
+            $this->app->singleton({Plugin}Interface::class, function () {
+                return new {Plugin}Repository(new {Plugin}());
+            });
+        }
+
+        Helper::autoload(__DIR__ . '/../../helpers');
+    }
+
+    /**
+     * @author Bytesoft
+     */
+    public function boot()
+    {
+        $this->setIsInConsole($this->app->runningInConsole())
+            ->setNamespace('plugins/{-plugin}')
+            ->loadAndPublishConfigurations(['permissions'])
+            ->loadMigrations()
+            ->loadAndPublishViews()
+            ->loadAndPublishTranslations()
+            ->loadRoutes();
+
+        Event::listen(SessionStarted::class, function () {
+            dashboard_menu()->registerItem([
+                'id' => 'cms-plugins-{plugin}',
+                'priority' => 5,
+                'parent_id' => null,
+                'name' => trans('plugins.{-plugin}::{-plugin}.name'),
+                'icon' => 'fa fa-list',
+                'url' => route('{plugin}.list'),
+                'permissions' => ['{plugin}.list'],
+            ]);
+        });
+    }
+}
